@@ -44,9 +44,9 @@
     @if (isset($show))
         disabled
     @endif
-
     >
     @if (!isset($show))
+        <input type="url" placeholder="Image Url" name="image">
         <button class="btn-primary">{{$btn ?? "Crear"}}</button>
     @endif
 </form>

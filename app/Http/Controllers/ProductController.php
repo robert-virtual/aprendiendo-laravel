@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Image;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -16,6 +17,7 @@ class ProductController extends Controller
     {
         //
         $products = Product::all();
+        $products->load(["images"]);
         return view("products.index",["products"=>$products]);
     }
 
@@ -54,9 +56,12 @@ class ProductController extends Controller
         $product->description = $request->description;
         $product->price = $request->price;
         $product->quantity = $request->quantity; 
+        $image = new Image;
+        $image->url = $request->image;
         $product->save();
-        //return redirect("/products");
-        return view("products.create",["product"=>$product]);
+        $product->images()->save($image);
+        return redirect("/products");
+        //return view("products.create",["product"=>$product]);
     }
 
     /**

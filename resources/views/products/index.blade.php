@@ -11,6 +11,7 @@
     <div class="grid">
         @foreach ($products as $product)
             <div class="product">
+                <img src="{{$product->images[0]->url}}" alt="">
                 <h4 class="title">{{$product->name}}</h4> 
                 <p class="description">{{$product->description}}</p>
                 <p class="price">LPS.{{$product->price}}</p>
