@@ -6,35 +6,45 @@
 @isset($msg)
    <p>msg: {{$msg}}</p> 
 @endisset
-<form action="{{$action}}" method="{{$method}}">
+<form action="{{$action}}" method="POST">
     @csrf
+    @method($method)
     <input 
     type="text" 
     placeholder="Name" 
     name="name" 
     value="{{$product->name}}"
-    disabled={{isset($show)}}
+    @if (isset($show))
+        disabled
+    @endif
     >
     <textarea 
     placeholder="Description" 
     name="description" 
     cols="30" 
     rows="10" 
-    disabled={{isset($show)}}
+    @if (isset($show))
+        disabled
+    @endif
     >{{$product->description}}</textarea>
     <input 
     type="number" 
     placeholder="Price"
     name="price" 
     value="{{$product->price}}"
-    disabled={{isset($show)}}
+    @if (isset($show))
+        disabled
+    @endif
     >
     <input 
     type="number" 
     placeholder="Quantity" 
     name="quantity" 
     value="{{$product->quantity}}"
-    disabled={{isset($show)}}
+    @if (isset($show))
+        disabled
+    @endif
+
     >
     @if (!isset($show))
         <button class="btn-primary">{{$btn ?? "Crear"}}</button>

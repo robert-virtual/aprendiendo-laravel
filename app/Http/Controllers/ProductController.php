@@ -112,7 +112,13 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         //
-        return view("products.show");
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->quantity = $request->quantity; 
+        $product->save();
+
+        return redirect("/products/$product->id/edit");
     }
 
     /**
