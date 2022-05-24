@@ -25,7 +25,8 @@
                 <form action="/products/{{$product->id}}" method="POST">
                     @csrf
                     @method("DELETE")
-                    <button class="btn-primary red">Eliminar</button>
+                    <button class="btn-primary {{$product->active?'red':'green'}}">
+                        {{$product->active?'Eliminar':'Activar'}}</button>
                 </form>
             </div>
         @endforeach

@@ -138,7 +138,7 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
-        $product->active = false;
+        $product->active = !$product->active;
         $product->save();
         return redirect("/products");
     }

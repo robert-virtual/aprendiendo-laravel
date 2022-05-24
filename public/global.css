@@ -117,6 +117,12 @@ form textarea,
 .red:hover {
     background-color: #f61d1d;
 }
+.green {
+    background-color: #2ae079;
+}
+.green:hover {
+    background-color: #03d960;
+}
 .product form {
     display: inline;
 }
