@@ -15,7 +15,8 @@ class ProductController extends Controller
     public function index()
     {
         //
-        return view("products");
+        $products = Product::all();
+        return view("products.index",["products"=>$products]);
     }
 
     /**
@@ -26,7 +27,17 @@ class ProductController extends Controller
     public function create()
     {
         //
-        return view("products");
+        $product = new Product;
+        $method = "POST";
+        $action = "/products";
+        return view(
+            "products.create",
+            [
+                "product"=>$product,
+                "method"=>$method,
+                "action"=>$action,
+            ]
+        );
     }
 
     /**
@@ -38,7 +49,14 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //
-        return view("products");
+        $product = new Product;
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->quantity = $request->quantity; 
+        $product->save();
+        //return redirect("/products");
+        return view("products.create",["product"=>$product]);
     }
 
     /**
@@ -50,7 +68,15 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         //
-        return view("products");
+        return view(
+            "products.create",
+            [
+                "product"=>$product,
+                "method"=>"",
+                "action"=>"",
+                "show"=>true
+            ]
+        );
     }
 
     /**
@@ -62,7 +88,18 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         //
-        return view("products");
+        $method = "PUT";
+        $btn= "Actualizar";
+        $action= "/products/$product->id";
+        return view(
+            "products.create",
+            [
+                "product"=>$product,
+                "method"=>$method,
+                "action"=>$action,
+                "btn"=>$btn
+            ]
+        );
     }
 
     /**
@@ -75,7 +112,7 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         //
-        return view("products");
+        return view("products.show");
     }
 
     /**
@@ -87,6 +124,6 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
-        return view("products");
+        return view("products.index");
     }
 }
