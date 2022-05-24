@@ -9,7 +9,6 @@
 </head>
 <body>
     <nav>
-        <a class="{{(request()->is('/')) ? 'active':''}}" href="/">Inicio</a>
         <a class="{{(request()->is('products')) ? 'active':''}}" href="/products">Products</a>
         <a class="{{(request()->is('products/create')) ? 'active':''}}" href="/products/create">Create Product</a>
     </nav>
