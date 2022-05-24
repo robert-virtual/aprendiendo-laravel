@@ -4,6 +4,10 @@
 
 @section('content')
 <h1>Products</h1>
+<div class="row justify-end">
+    <a href="/products">Productos Activos</a>
+    <a href="/products?active=0">Productos Inactivos</a>
+</div>
 @if (count($products) == 0)
     <h3>Aun no hay Productos</h3> 
 @else

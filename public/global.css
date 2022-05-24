@@ -107,7 +107,8 @@ form textarea,
 .product .description {
     color: var(--text-color-2);
 }
-.product img {
+.product img,
+.row img {
     width: 19rem;
 }
 .red {
@@ -118,4 +119,12 @@ form textarea,
 }
 .product form {
     display: inline;
+}
+
+.row {
+    display: flex;
+    gap: 1rem;
+}
+.justify-end {
+    justify-content: flex-end;
 }

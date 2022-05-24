@@ -3,9 +3,13 @@
 
 @section('content')
 <h1>Create</h1>
-@isset($msg)
-   <p>msg: {{$msg}}</p> 
-@endisset
+<div class="row">
+    @isset($product->images[0]->url)
+    <img 
+    src="{{$product->images[0]->url}}" 
+    alt="{{$product->name}}">
+        
+    @endisset
 <form action="{{$action}}" method="POST">
     @csrf
     @method($method)
@@ -14,7 +18,7 @@
     placeholder="Name" 
     name="name" 
     value="{{$product->name}}"
-    @if (isset($show))
+    @if($show)
         disabled
     @endif
     >
@@ -23,7 +27,7 @@
     name="description" 
     cols="30" 
     rows="10" 
-    @if (isset($show))
+    @if($show)
         disabled
     @endif
     >{{$product->description}}</textarea>
@@ -32,7 +36,7 @@
     placeholder="Price"
     name="price" 
     value="{{$product->price}}"
-    @if (isset($show))
+    @if($show)
         disabled
     @endif
     >
@@ -41,13 +45,22 @@
     placeholder="Quantity" 
     name="quantity" 
     value="{{$product->quantity}}"
-    @if (isset($show))
+    @if($show)
         disabled
     @endif
     >
-    @if (!isset($show))
-        <input type="url" placeholder="Image Url" name="image">
+    @unless($show)
+        <input 
+        type="url" 
+        placeholder="Image Url" 
+        name="image"
+
+        @isset($product->images[0]->url)
+        value="{{$product->images[0]->url}}"
+        @endisset
+        >
         <button class="btn-primary">{{$btn ?? "Crear"}}</button>
-    @endif
+    @endunless
 </form>
+</div>
 @endsection

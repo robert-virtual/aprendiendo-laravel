@@ -13,10 +13,11 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $products = Product::all();
+        $active = $request->input("active",1);
+        $products = Product::all()->where("active",$active);
         $products->load(["images"]);
         return view("products.index",["products"=>$products]);
     }
@@ -38,6 +39,7 @@ class ProductController extends Controller
                 "product"=>$product,
                 "method"=>$method,
                 "action"=>$action,
+                "show"=>false,
             ]
         );
     }
@@ -102,7 +104,8 @@ class ProductController extends Controller
                 "product"=>$product,
                 "method"=>$method,
                 "action"=>$action,
-                "btn"=>$btn
+                "btn"=>$btn,
+                "show"=>false
             ]
         );
     }
