@@ -136,6 +136,7 @@ class ProductController extends Controller
     {
         //
         $product->active = false;
+        $product->save();
         return redirect("/products");
     }
 }
