@@ -17,6 +17,11 @@
                 <p class="quantity"> available: {{$product->quantity}}</p>
                 <a href="/products/{{$product->id}}" class="btn-primary">Ver</a>
                 <a href="/products/{{$product->id}}/edit" class="btn-primary">Editar</a>
+                <form action="/products/{{$product->id}}" method="POST">
+                    @csrf
+                    @method("DELETE")
+                    <button class="btn-primary red">Eliminar</button>
+                </form>
             </div>
         @endforeach
     </div>

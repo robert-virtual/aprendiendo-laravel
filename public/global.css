@@ -59,11 +59,11 @@ form textarea,
     text-decoration: none;
 }
 
-form button:hover {
+.btn-primary:hover {
     background-color: var(--secundary-color);
     transform: scale(1.1);
 }
-form button:active {
+.btn-primary:active {
     transform: scale(1);
 }
 .grid {
@@ -87,4 +87,13 @@ form button:active {
 }
 .product .description {
     color: var(--text-color-2);
+}
+.red {
+    background-color: #e54141;
+}
+.red:hover {
+    background-color: #f61d1d;
+}
+.product form {
+    display: inline;
 }
